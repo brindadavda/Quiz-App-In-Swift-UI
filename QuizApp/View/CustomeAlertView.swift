@@ -14,9 +14,6 @@ struct CustomAlertView : View {
     var bgColor : Color = .gray.opacity(0.1)
     private let textColor : Color = Color(hex: "323E5B")
     
-    private let cancleBgColor : LinearGradient = LinearGradient(colors: [.red,.white.opacity(0.3),.red], startPoint: UnitPoint(x: 0, y: 0.5), endPoint: UnitPoint(x: 0.5, y: 1))
-    private let okBgColor : LinearGradient = LinearGradient(colors: [.green,.white.opacity(0.3),.green], startPoint: UnitPoint(x: 0, y: 0.5), endPoint: UnitPoint(x: 0.5, y: 1))
-    
      let cancleAction : () -> Void
      let OkAction : () -> Void
     
@@ -68,13 +65,11 @@ struct CustomAlertView : View {
         Button(action: {
             cancleAction()
         }, label: {
-            Circle()
-                .fill(cancleBgColor)
-                .overlay{
-                    Image(systemName: "xmark")
+           
+                    Image("wrongImg")
                         .foregroundStyle(textColor)
                         .font(.largeTitle)
-                }
+                
                 
         })
     }
@@ -83,13 +78,11 @@ struct CustomAlertView : View {
         Button(action: {
             OkAction()
         }, label: {
-            Circle()
-                .fill(okBgColor)
-                .overlay{
-                    Image(systemName: "checkmark")
+           
+                    Image("correctImg")
                         .font(.largeTitle)
                         .foregroundStyle(textColor)
-                }
+                
                 
         })
     }

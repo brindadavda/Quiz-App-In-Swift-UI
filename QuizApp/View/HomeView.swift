@@ -24,8 +24,9 @@ struct HomeView: View {
                     HStack {
                         Text("\(quizData.totalCoins)")
                             .foregroundStyle(.white)
-                        Image(systemName: "circle.fill")
-                            .foregroundStyle(.yellow)
+                        Image("coinImg")
+                            .resizable()
+                            .frame(width: 24,height: 24)
                             .background {
                                 Circle()
                                     .frame(width: 30, height: 30)

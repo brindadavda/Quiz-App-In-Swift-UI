@@ -38,37 +38,6 @@ func getCategoryTotalQuestionsID(category : Categories) -> [String]{
     return questions.filter({$0.image == category.imageName}).map({$0.id})
 }
 
-
-// Dummy quiz categories
-let category1 = QuizCategory(
-    image: Categories.science.imageName,
-    name: Categories.science.rawValue,
-    questionIDs: getCategoryTotalQuestionsID(category: .science),
-    hexColor: "#FF5733",
-    progress: 0.5
-)
-
-let category2 = QuizCategory(
-    image: Categories.history.imageName,
-    name: Categories.history.rawValue,
-    questionIDs: getCategoryTotalQuestionsID(category: .history),
-    hexColor: "#33FF57",
-    progress: 0.7
-)
-
-let category3 = QuizCategory(
-    image: Categories.math.imageName,
-    name: Categories.math.rawValue,
-    questionIDs: getCategoryTotalQuestionsID(category: .math),
-    hexColor: "#3357FF",
-    progress: 0.3
-)
-
-// Dummy data array
-let quizCategories = [category1, category2, category3]
-
-
-
 import SwiftUI
 import Combine
 

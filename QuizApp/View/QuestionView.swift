@@ -28,9 +28,10 @@ struct QuestionView: View {
     }
 
     @State var showingDetail = false
-    @State var isOptionSelected : Bool = false
+    @State var isOptionSelected : Bool = false 
     @State var isQuestionRight : Bool = false
     @State var selectedAns : String = ""
+    @State var totalCorrectQuestion : Int = 0
 
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var quizData: QuizData
@@ -39,15 +40,22 @@ struct QuestionView: View {
         
         if showingDetail {
             CustomAlertView(bgColor: .red, cancleAction: { self.showingDetail.toggle() }, OkAction: {
-                if var category = quizData.quizCategories.filter({$0.name == selectedCategory.rawValue}).first{
-                    category.progress = Float((currentQuestionIndex/totalQuestion))
-                }
-                dismiss()
-            })
-            .background(bgColor)
-            .navigationBarBackButtonHidden()
+                 if var category = quizData.quizCategories.filter({$0.name == selectedCategory.rawValue}).first {
+                   category.progress = Float((currentQuestionIndex/totalQuestion))
+                   // NavigationLink to go back to the previous view (assuming it's in the navigation stack)
+                     
+                     NavigationLink(destination: HomeView().environmentObject(quizData)
+                        , label: {
+                     Text("Go Back")
+                        
+                   })
+                     dismiss()
+                 }
+               })
+               .background(bgColor)
+               .navigationBarBackButtonHidden()
         } else {
-            ZStack{
+            ZStack(alignment: .topLeading){
                 bgColor.ignoresSafeArea()
                 VStack {
                     ZStack {
@@ -70,8 +78,10 @@ struct QuestionView: View {
                             HStack {
                                 Text("\(totalCoins)")
                                     .foregroundStyle(textColor)
-                                Image(systemName: "circle.fill")
-                                    .foregroundStyle(.yellow)
+                                
+                                Image("coinImg")
+                                    .resizable()
+                                    .frame(width: 24,height: 24)
                                     .background {
                                         Circle()
                                             .fill(bgColorCoin)
@@ -114,7 +124,7 @@ struct QuestionView: View {
                     
                     
                     if isOptionSelected{
-                        optionView(text: selectedAns)
+                        optionView(text: selectedAns, imageName: isQuestionRight ? "correctImg" : "wrongImg")
                         VStack{
                             HStack{
                                 if isQuestionRight{
@@ -129,7 +139,7 @@ struct QuestionView: View {
                             }
                             .padding()
                             
-                            Image(systemName: isQuestionRight ? "heart.fill" : "heart")
+                            Image(isQuestionRight ? "coinImg" : "imogyImg")
                                 .resizable()
                                 .frame(width: 54,height: 54)
                         }
@@ -154,9 +164,9 @@ struct QuestionView: View {
                         Spacer().ignoresSafeArea()
                         HStack(alignment: .center){
                             Spacer()
-                            Text("Next").padding(.trailing,5)
+                            Text("\(currentQuestionIndex < questions.count-1  ? "Next":"Result")").padding(.trailing,5)
                             
-                        
+    
                             if currentQuestionIndex < questions.count-1 {
                                 NavigationLink(destination: QuestionView(selectedCategory: selectedCategory, questions: questions) ,label: {
                                     Button(action: {
@@ -178,9 +188,24 @@ struct QuestionView: View {
                                 })
                             }
                             else{
-                                NavigationLink(destination: HomeView().environmentObject(quizData) ,label: {
-                                        Text("")
+                                
+                                    
+
+                                        NavigationLink(destination: ResultView(earnedCoins: totalCoins,totalScored: totalCorrectQuestion,totalQestion: totalQuestion) ,label: {
+                                        RoundedRectangle(cornerRadius: 30)
+                                            .foregroundStyle(.white)
+                                            .shadow(color: shadowColor, radius: 3, x: 0, y: 6)
+                                            .overlay{
+                                                Image(systemName: "arrow.right")
+                                                    .resizable()
+                                                    .padding()
+                                                    .foregroundStyle(textColor)
+                                            }
+                                            .frame(width: 67,height: 60)
+                                            .padding(.trailing,10)
                                     })
+                            
+                        
                             }
                         }
                     }
@@ -191,7 +216,7 @@ struct QuestionView: View {
     }
 
 
-    private func optionView(text: String) -> some View {
+    private func optionView(text: String , imageName : String = "wrongImg") -> some View {
         return
             ZStack(alignment: .center) {
                 Button(action: {
@@ -199,10 +224,11 @@ struct QuestionView: View {
                     isOptionSelected.toggle()
                     selectedAns = text
                     totalCoins += isQuestionRight ? 10 : 0
+                    totalCorrectQuestion += isQuestionRight ? 1 : 0
                 }, label: {
                     HStack{
                         if isOptionSelected{
-                            Image(systemName: isQuestionRight ? "heart.fill" : "heart")
+                            Image(imageName)
                                 .resizable()
                                 .frame(width: 24,height: 24)
                                 .padding()
@@ -221,7 +247,9 @@ struct QuestionView: View {
                 Text(text.uppercased())
                     .foregroundStyle(.black)
             }
+            
     }
+    
 }
 
 #Preview {
