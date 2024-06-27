@@ -16,11 +16,16 @@ struct CustomAlertView : View {
     
      let cancleAction : () -> Void
      let OkAction : () -> Void
+   
+    private var alertTitle : String
+    private var alertMessage : String
     
-    init(bgColor: Color, cancleAction: @escaping () -> Void, OkAction: @escaping () -> Void) {
+    init(bgColor: Color, cancleAction: @escaping () -> Void, OkAction: @escaping () -> Void, alertTitle: String = "Are you sure ?", alertMessage: String  = "You want to quit?") {
         self.bgColor = bgColor
         self.cancleAction = cancleAction
         self.OkAction = OkAction
+        self.alertTitle = alertTitle
+        self.alertMessage = alertMessage
     }
    
     
@@ -31,11 +36,11 @@ struct CustomAlertView : View {
             Spacer().ignoresSafeArea()
             
             VStack{
-                Text("Are you sure ?".capitalized)
+                Text(alertTitle.capitalized)
                     .font(.title)
                     .padding(.bottom,5)
                 
-                Text("You want to quit?")
+                Text(alertMessage)
                     .font(.headline)
                 
                 HStack{

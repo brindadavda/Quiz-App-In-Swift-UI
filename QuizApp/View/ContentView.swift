@@ -7,15 +7,14 @@
 
 import SwiftUI
 
-var totalCoins : Int = 0
+
 
 struct ContentView: View {
     
     var bgColors : [Color] = [Color(hex: "D33C3C")]
     var shadowColor : Color = Color(hex: "D8D5EA")
     
-    
-    @StateObject private var quizData = QuizData(quizCategories: quizCategories, totalCoins: 100)
+    @EnvironmentObject var quizData: QuizData
     
     var body: some View {
         NavigationView {
@@ -40,38 +39,45 @@ struct ContentView: View {
                             Text("Academy!")
                                 .font(.title)
                         }
+                        
                     })
+                    .font(Font.custom(AppFont.ragular.rawValue, size: 32))
                     .padding(.bottom,20)
             
                     Text("Play , learn , and Explore with Exciting Quizzes!")
-                        .font(.title3)
+                        .font(Font.custom(AppFont.ragular.rawValue, size: 16))
                         .padding(.bottom,20)
                     
+                    
                     NavigationLink(destination: { HomeView().environmentObject(quizData) }, label: {
+                       
                         ZStack{
-                            Button(action: {}, label: {
-                                Text("")
-                            })
-                            .frame(width: 300,height: 50)
-                            .background(content: {
-                                RoundedRectangle(cornerRadius: 100)
-                                    .shadow(color: shadowColor, radius : 3 ,x: 0,y: 6)
-                            })
+                            RoundedRectangle(cornerRadius: 100)
+                                .shadow(color: shadowColor, radius : 3 ,x: 0,y: 6)
                             
+                           
                             Text("Get Started".uppercased())
-                                .foregroundStyle(.black)
+                                    .font(Font.custom(AppFont.ragular.rawValue, size: 16))
+                                    .foregroundStyle(.black)
+                                    .padding()
+                            
                         }
+                        .frame(height: 50)
+                        .padding()
+    
                     })
                     
                 })
                 .foregroundStyle(.white)
-                .padding(.bottom,50)
+                .padding()
                 
             }
+            
             .ignoresSafeArea()
             .background(
                 LinearGradient(colors: bgColors, startPoint: UnitPoint(x: 0, y: 0), endPoint: UnitPoint(x: 0, y: 1))
         )
+            
         }
         .environmentObject(quizData)
         
@@ -79,6 +85,6 @@ struct ContentView: View {
     
 }
 
-#Preview {
-    ContentView()
-}
+//#Preview {
+//    ContentView()
+//}

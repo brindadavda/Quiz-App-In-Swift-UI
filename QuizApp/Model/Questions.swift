@@ -7,19 +7,7 @@
 
 import Foundation
 
-enum Categories : String{
-    case science = "science"
-    case history = "history"
-    case math = "math"
-    
-    var imageName : String{
-        switch self{
-        case .science : return "science"
-        case .history : return "history"
-        case .math : return "math"
-        }
-    }
-}
+
 
 class Questions{
     var id : String

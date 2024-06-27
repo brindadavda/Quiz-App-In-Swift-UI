@@ -16,12 +16,13 @@ struct ResultView: View {
     private let cardColor: LinearGradient = LinearGradient(colors: [Color(hex: "#D988C2") , Color(hex : "#272052")], startPoint: UnitPoint(x: 0, y: 0), endPoint: UnitPoint(x: 1, y: 1))
     
     private var earnedCoins : Int = 60
-    
     private var totalScored : Int = 10
     private var totalQestion : Int = 10
     
-    @State private var isNavigateToHomeView : Bool = true
+    @State private var isNavigateToHomeView : Bool = false
+    @State private var showingAlert : Bool = false
     @Environment (\.dismiss) var dismiss
+    @EnvironmentObject  var quizData : QuizData
     
     init(earnedCoins: Int, totalScored: Int, totalQestion: Int) {
         self.earnedCoins = earnedCoins
@@ -30,32 +31,45 @@ struct ResultView: View {
     }
     
     var body: some View {
-        ZStack(alignment: .topLeading){
-            bgColor.ignoresSafeArea()
-            VStack {
-                
-                //Top View starts
-                ZStack {
+        if showingAlert{
+            CustomAlertView(
+                bgColor: .red,
+                cancleAction: { self.showingAlert.toggle() },
+                OkAction: {self.isNavigateToHomeView.toggle()},
+                alertMessage: "You want to go home?"
+            )
+            .background(bgColor)
+            .navigate(to: HomeView().environmentObject(quizData), when: $isNavigateToHomeView)
+            .navigationBarBackButtonHidden()
+        }
+        else{
+            ZStack(alignment: .topLeading){
+                bgColor.ignoresSafeArea()
+                VStack {
+                    //Top View starts
                     HStack {
-                        
-                        NavigationLink(destination: {HomeView()}
-                        , label: {
+                        Button(action: {
+                            showingAlert.toggle()
+                        }, label: {
                             Circle()
                                 .stroke(.white.opacity(0.3), lineWidth: 2.3)
                                 .frame(width: 30, height: 30)
                                 .overlay {
-                                    Image("homeImg")
-                                        .resizable()
-                                        .frame(width: 16,height: 16)
-                                        .padding()
+                                    ZStack{
+                                        Image("homeImg")
+                                            .resizable()
+                                            .frame(width: 16,height: 16)
+                                            .padding()
+                                        
+                                        
+                                    }
                                 }
-                            
                         })
-                        
                         Spacer()
                         
                         HStack {
-                            Text("\(totalCoins)")
+                            Text("\(earnedCoins)")
+                                .font(Font.custom(AppFont.ragular.rawValue, size: 12))
                                 .foregroundStyle(textColor)
                             
                             Image("coinImg")
@@ -72,86 +86,88 @@ struct ResultView: View {
                             RoundedRectangle(cornerRadius: 25)
                                 .fill(.white)
                         }
-                    }
-                }
-                .padding(.bottom)
-                //Top View end
-                
-                //Coin View start
-                VStack{
-                    Text("you have earned")
-                        .font(.system(size: 32))
-                    
-                    ZStack(alignment : .center){
-                        Image("customeImg")
-                            .resizable()
-                            .padding()
-                        
-                        Text("\(earnedCoins)")
-                            .foregroundStyle(.white)
-                            .font(.system(size: 80))
-                            .padding()
-                            .background{
-                                /*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/.fill(Color(hex:"#FFD43A"))
-                            }
                         
                     }
-                    .frame(width: 300,height: 300)
-                }
-                .padding()
-                .background{
-                    RoundedRectangle(cornerRadius: 30)
-                        .fill(cardColor)
-                }
-                
-                Spacer(minLength: 10)
-                 
-                VStack{
-                    Text("Your final score is")
-                        .font(.system(size: 32))
-                    HStack{
-                        Text("\(totalScored)").foregroundStyle(Color(hex: "#A457EF"))
-                        Text("/ \(totalQestion)")
-                    }.font(.system(size: 48))
-                }
-                
-                Spacer(minLength: 10)
-                
-                HStack{
+                    .padding(.bottom)
+                    .padding(.leading)
+                    .padding(.trailing)
+                    //Top View end
                     
-                    HStack{
-                        Image("correctImg")
-                            .font(.title)
+                    //Coin View start
+                    VStack{
+                        Text("you have earned")
+                            .font(Font.custom(AppFont.italic.rawValue, size: 32))
+                        
+                        ZStack(alignment : .center){
+                            Image("customeImg")
+                                .resizable()
+                                .padding()
                             
-                        Text("\(totalScored) Correct")
-                            .font(.system(size: 24))
+                            Text("\(earnedCoins)")
+                                .font(Font.custom(AppFont.ragular.rawValue, size: 80))
+                                .foregroundStyle(.white)
+                                .padding()
+                                .background{
+                                    /*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/.fill(Color(hex:"#FFD43A"))
+                                }
+                            
+                        }
+                        .frame(width: 300,height: 300)
+                    }
+                    .padding()
+                    .background{
+                        RoundedRectangle(cornerRadius: 30)
+                            .fill(cardColor)
                     }
                     
-                    HStack{
-                        Image("wrongImg")
-                            .font(.title)
-                            
-                        Text("\(totalQestion - totalScored) wrong")
-                            .font(.system(size: 24))
-                    }
-                   
-                }
-                .padding()
-                .frame(height: 70)
-                .background{
-                    RoundedRectangle(cornerRadius: 100)
-                        .fill(Color(hex: "#50386C"))
-                        .shadow(color : Color(hex: "#785085"),radius: 4,y:10)
-                }
+                    Spacer(minLength: 10)
                     
+                    VStack{
+                        Text("Your final score is")
+                            .font(Font.custom(AppFont.ragular.rawValue, size: 32))
+                        HStack{
+                            Text("\(totalScored)").foregroundStyle(Color(hex: "#A457EF"))
+                            Text("/ \(totalQestion)")
+                        }.font(Font.custom(AppFont.ragular.rawValue, size: 48))
+                    }
+                    
+                    Spacer(minLength: 10)
+                    
+                    HStack{
+                        
+                        HStack{
+                            Image("correctImg")
+                                .font(.title)
+                            
+                            Text("\(totalScored) Correct")
+                                .font(Font.custom(AppFont.ragular.rawValue, size: 24))
+                        }
+                        
+                        HStack{
+                            Image("wrongImg")
+                                .font(.title)
+                            
+                            Text("\(totalQestion - totalScored) wrong")
+                                .font(Font.custom(AppFont.ragular.rawValue, size: 24))
+                        }
+                        
+                    }
+                    .padding()
+                    .frame(height: 70)
+                    .background{
+                        RoundedRectangle(cornerRadius: 100)
+                            .fill(Color(hex: "#50386C"))
+                            .shadow(color : Color(hex: "#785085"),radius: 4,y:10)
+                    }
+                    
+                    
+                }
+                .foregroundStyle(.white)
+                .padding()
                 
             }
-            .foregroundStyle(.white)
-            .padding()
-            
+            .navigationBarBackButtonHidden()
         }
-        .navigationBarBackButtonHidden()
-        
     }
 }
 

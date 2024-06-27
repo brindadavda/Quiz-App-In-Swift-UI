@@ -13,7 +13,8 @@ let category1 = QuizCategory(
     name: Categories.science.rawValue,
     questionIDs: getCategoryTotalQuestionsID(category: .science),
     hexColor: "#FF5733",
-    progress: 0.5
+    progress: 0.0, 
+    totalCoin: 0
 )
 
 let category2 = QuizCategory(
@@ -21,7 +22,8 @@ let category2 = QuizCategory(
     name: Categories.history.rawValue,
     questionIDs: getCategoryTotalQuestionsID(category: .history),
     hexColor: "#33FF57",
-    progress: 0.7
+    progress: 0.0,
+    totalCoin: 0
 )
 
 let category3 = QuizCategory(
@@ -29,11 +31,39 @@ let category3 = QuizCategory(
     name: Categories.math.rawValue,
     questionIDs: getCategoryTotalQuestionsID(category: .math),
     hexColor: "#3357FF",
-    progress: 0.3
+    progress: 0.0,
+    totalCoin: 0
+)
+
+let category4 = QuizCategory(
+    image: Categories.geography.imageName,
+    name: Categories.geography.rawValue,
+    questionIDs: getCategoryTotalQuestionsID(category: .geography),
+    hexColor: "#FF33A1",
+    progress: 0.0,
+    totalCoin: 0
+)
+
+let category5 = QuizCategory(
+    image: Categories.literature.imageName,
+    name: Categories.literature.rawValue,
+    questionIDs: getCategoryTotalQuestionsID(category: .literature),
+    hexColor: "#A133FF",
+    progress: 0.0,
+    totalCoin: 0
+)
+
+let category6 = QuizCategory(
+    image: Categories.sports.imageName,
+    name: Categories.sports.rawValue,
+    questionIDs: getCategoryTotalQuestionsID(category: .sports),
+    hexColor: "#33FFA1",
+    progress: 0.0,
+    totalCoin: 0
 )
 
 // Dummy data array
-let quizCategories = [category1, category2, category3]
+let quizCategories = [category1, category2, category3 , category4 , category5 , category6]
 
 
 
@@ -338,4 +368,287 @@ let question30 = Questions(
     correctAns: "30"
 )
 
-let questions: [Questions] = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14, question15, question16, question17, question18, question19, question20, question21, question22, question23, question24, question25, question26, question27, question28, question29, question30]
+// Literature Questions
+let literatureQuestions = [
+    Questions(
+        id: "31",
+        image: Categories.literature.imageName,
+        question: "Who is the author of '1984'?",
+        option1: "George Orwell",
+        option2: "Aldous Huxley",
+        option3: "Ray Bradbury",
+        correctAns: "George Orwell"
+    ),
+    Questions(
+        id: "32",
+        image: Categories.literature.imageName,
+        question: "In which Shakespeare play do Rosencrantz and Guildenstern appear?",
+        option1: "Macbeth",
+        option2: "Hamlet",
+        option3: "Othello",
+        correctAns: "Hamlet"
+    ),
+    Questions(
+        id: "33",
+        image: Categories.literature.imageName,
+        question: "What is the title of the first Harry Potter book?",
+        option1: "The Philosopher's Stone",
+        option2: "The Chamber of Secrets",
+        option3: "The Goblet of Fire",
+        correctAns: "The Philosopher's Stone"
+    ),
+    Questions(
+        id: "34",
+        image: Categories.literature.imageName,
+        question: "Who wrote 'Pride and Prejudice'?",
+        option1: "Charlotte Bronte",
+        option2: "Emily Bronte",
+        option3: "Jane Austen",
+        correctAns: "Jane Austen"
+    ),
+    Questions(
+        id: "35",
+        image: Categories.literature.imageName,
+        question: "Which novel begins with 'Call me Ishmael'?",
+        option1: "Moby-Dick",
+        option2: "The Great Gatsby",
+        option3: "1984",
+        correctAns: "Moby-Dick"
+    ),
+    Questions(
+        id: "36",
+        image: Categories.literature.imageName,
+        question: "Who wrote 'To Kill a Mockingbird'?",
+        option1: "Harper Lee",
+        option2: "Mark Twain",
+        option3: "F. Scott Fitzgerald",
+        correctAns: "Harper Lee"
+    ),
+    Questions(
+        id: "37",
+        image: Categories.literature.imageName,
+        question: "What is the pen name of Mary Ann Evans?",
+        option1: "George Eliot",
+        option2: "George Orwell",
+        option3: "J.K. Rowling",
+        correctAns: "George Eliot"
+    ),
+    Questions(
+        id: "38",
+        image: Categories.literature.imageName,
+        question: "Which Russian author wrote 'Crime and Punishment'?",
+        option1: "Leo Tolstoy",
+        option2: "Fyodor Dostoevsky",
+        option3: "Anton Chekhov",
+        correctAns: "Fyodor Dostoevsky"
+    ),
+    Questions(
+        id: "39",
+        image: Categories.literature.imageName,
+        question: "In which book does the character Atticus Finch appear?",
+        option1: "To Kill a Mockingbird",
+        option2: "The Catcher in the Rye",
+        option3: "Of Mice and Men",
+        correctAns: "To Kill a Mockingbird"
+    ),
+    Questions(
+        id: "40",
+        image: Categories.literature.imageName,
+        question: "What is the name of the hobbit played by Elijah Wood in the 'Lord of the Rings' films?",
+        option1: "Bilbo Baggins",
+        option2: "Frodo Baggins",
+        option3: "Samwise Gamgee",
+        correctAns: "Frodo Baggins"
+    )
+]
+
+// Sports Questions
+let sportsQuestions = [
+    Questions(
+        id: "41",
+        image: Categories.sports.imageName,
+        question: "How many holes are there in a standard round of golf?",
+        option1: "9",
+        option2: "18",
+        option3: "21",
+        correctAns: "18"
+    ),
+    Questions(
+        id: "42",
+        image: Categories.sports.imageName,
+        question: "Which country won the FIFA World Cup in 2018?",
+        option1: "Germany",
+        option2: "Brazil",
+        option3: "France",
+        correctAns: "France"
+    ),
+    Questions(
+        id: "43",
+        image: Categories.sports.imageName,
+        question: "In tennis, what is the term for a score of zero?",
+        option1: "Love",
+        option2: "Deuce",
+        option3: "Fault",
+        correctAns: "Love"
+    ),
+    Questions(
+        id: "44",
+        image: Categories.sports.imageName,
+        question: "Who holds the record for the most home runs in a single MLB season?",
+        option1: "Barry Bonds",
+        option2: "Babe Ruth",
+        option3: "Hank Aaron",
+        correctAns: "Barry Bonds"
+    ),
+    Questions(
+        id: "45",
+        image: Categories.sports.imageName,
+        question: "Which country hosts the Australian Open tennis tournament?",
+        option1: "Australia",
+        option2: "USA",
+        option3: "UK",
+        correctAns: "Australia"
+    ),
+    Questions(
+        id: "46",
+        image: Categories.sports.imageName,
+        question: "How many players are there on a basketball team?",
+        option1: "5",
+        option2: "7",
+        option3: "11",
+        correctAns: "5"
+    ),
+    Questions(
+        id: "47",
+        image: Categories.sports.imageName,
+        question: "Which sport is known as 'the king of sports'?",
+        option1: "Soccer",
+        option2: "Basketball",
+        option3: "Cricket",
+        correctAns: "Soccer"
+    ),
+    Questions(
+        id: "48",
+        image: Categories.sports.imageName,
+        question: "In which sport would you perform a slam dunk?",
+        option1: "Basketball",
+        option2: "Volleyball",
+        option3: "Tennis",
+        correctAns: "Basketball"
+    ),
+    Questions(
+        id: "49",
+        image: Categories.sports.imageName,
+        question: "What is the length of an Olympic swimming pool?",
+        option1: "25 meters",
+        option2: "50 meters",
+        option3: "100 meters",
+        correctAns: "50 meters"
+    ),
+    Questions(
+        id: "50",
+        image: Categories.sports.imageName,
+        question: "Which boxer is known as 'The Greatest' and 'The People's Champion'?",
+        option1: "Mike Tyson",
+        option2: "Muhammad Ali",
+        option3: "Floyd Mayweather",
+        correctAns: "Muhammad Ali"
+    )
+]
+
+// Geography Questions
+let geographyQuestions = [
+    Questions(
+        id: "51",
+        image: Categories.geography.imageName,
+        question: "What is the largest desert in the world?",
+        option1: "Sahara",
+        option2: "Gobi",
+        option3: "Antarctic",
+        correctAns: "Antarctic"
+    ),
+    Questions(
+        id: "52",
+        image: Categories.geography.imageName,
+        question: "Which river is the longest in the world?",
+        option1: "Amazon",
+        option2: "Nile",
+        option3: "Yangtze",
+        correctAns: "Nile"
+    ),
+    Questions(
+        id: "53",
+        image: Categories.geography.imageName,
+        question: "Which country has the largest population in the world?",
+        option1: "India",
+        option2: "USA",
+        option3: "China",
+        correctAns: "China"
+    ),
+    Questions(
+        id: "54",
+        image: Categories.geography.imageName,
+        question: "What is the capital of Canada?",
+        option1: "Toronto",
+        option2: "Vancouver",
+        option3: "Ottawa",
+        correctAns: "Ottawa"
+    ),
+    Questions(
+        id: "55",
+        image: Categories.geography.imageName,
+        question: "Which continent is known as the 'Dark Continent'?",
+        option1: "Asia",
+        option2: "Africa",
+        option3: "South America",
+        correctAns: "Africa"
+    ),
+    Questions(
+        id: "56",
+        image: Categories.geography.imageName,
+        question: "Which country is both in Europe and Asia?",
+        option1: "Turkey",
+        option2: "Russia",
+        option3: "Kazakhstan",
+        correctAns: "Turkey"
+    ),
+    Questions(
+        id: "57",
+        image: Categories.geography.imageName,
+        question: "What is the smallest country in the world?",
+        option1: "Monaco",
+        option2: "Vatican City",
+        option3: "San Marino",
+        correctAns: "Vatican City"
+    ),
+    Questions(
+        id: "58",
+        image: Categories.geography.imageName,
+        question: "What is the capital of Australia?",
+        option1: "Sydney",
+        option2: "Melbourne",
+        option3: "Canberra",
+        correctAns: "Canberra"
+    ),
+    Questions(
+        id: "59",
+        image: Categories.geography.imageName,
+        question: "Which ocean is the largest by area?",
+        option1: "Atlantic",
+        option2: "Indian",
+        option3: "Pacific",
+        correctAns: "Pacific"
+    ),
+    Questions(
+        id: "60",
+        image: Categories.geography.imageName,
+        question: "Which country has the most natural lakes?",
+        option1: "Canada",
+        option2: "USA",
+        option3: "Russia",
+        correctAns: "Canada"
+    )
+]
+
+// Combine all questions into one array
+let questions: [Questions] = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14, question15, question16, question17, question18, question19, question20, question21, question22, question23, question24, question25, question26, question27, question28, question29, question30] + literatureQuestions + sportsQuestions + geographyQuestions
