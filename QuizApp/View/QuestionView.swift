@@ -29,6 +29,7 @@ struct QuestionView: View {
     @State private var totalCorrectQuestion  : Int
     @State private var currentQuestionIndex: Int
     @State private var totalCoins: Int
+    @State private var navigateToNextQuestion = false
     
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var quizData: QuizData
@@ -36,7 +37,7 @@ struct QuestionView: View {
     // MARK: - Initializer
     init(selectedCategory: Categories, questions: [Questions], totalCoins: Int, currentQuestionIndex: Int, totalCorrectQuestion : Int) {
         self.selectedCategory = selectedCategory
-        self.questions = questions.shuffled()
+        self.questions = questions
         self.totalQuestion = questions.count
         self.totalCoins = totalCoins
         self.currentQuestionIndex = currentQuestionIndex
@@ -258,7 +259,9 @@ struct QuestionView: View {
     private var nextButton: some View {
         if currentQuestionIndex < questions.count - 1 {
             return AnyView(
-                NavigationLink(destination: nextQuestionView, label: {
+                Button(action: {
+                    self.navigateToNextQuestion = true
+                }, label: {
                     RoundedRectangle(cornerRadius: 30)
                         .foregroundStyle(.white)
                         .shadow(color: shadowColor, radius: 3, x: 0, y: 6)
@@ -271,29 +274,32 @@ struct QuestionView: View {
                         .frame(width: 67, height: 60)
                         .padding(.trailing, 10)
                 })
+                .background(
+                    NavigationLink(destination: nextQuestionView, isActive: $navigateToNextQuestion) {
+                        EmptyView()
+                    }
+                    .hidden()
+                )
             )
         } else {
             return AnyView(
-                    NavigationLink(destination: ResultView(earnedCoins: totalCoins,totalScored: totalCorrectQuestion,totalQestion: totalQuestion).environmentObject(quizData), label: {
-                        RoundedRectangle(cornerRadius: 30)
-                            .foregroundStyle(.white)
-                            .shadow(color: shadowColor, radius: 3, x: 0, y: 6)
-                            .overlay {
-                                Image(systemName: "arrow.right")
-                                    .resizable()
-                                    .padding()
-                                    .foregroundStyle(textColor)
-                            }
-                            .frame(width: 67, height: 60)
-                            .padding(.trailing, 10)
-                    })
-                
-                
-                )
-                
+                NavigationLink(destination: ResultView(earnedCoins: totalCoins, totalScored: totalCorrectQuestion, totalQestion: totalQuestion).environmentObject(quizData)) {
+                    RoundedRectangle(cornerRadius: 30)
+                        .foregroundStyle(.white)
+                        .shadow(color: shadowColor, radius: 3, x: 0, y: 6)
+                        .overlay {
+                            Image(systemName: "arrow.right")
+                                .resizable()
+                                .padding()
+                                .foregroundStyle(textColor)
+                        }
+                        .frame(width: 67, height: 60)
+                        .padding(.trailing, 10)
+                }
+            )
         }
     }
-    
+
     // MARK: - Next Question View
     private var nextQuestionView: some View {
         QuestionView(
@@ -301,7 +307,7 @@ struct QuestionView: View {
             questions: questions,
             totalCoins: totalCoins,
             currentQuestionIndex: currentQuestionIndex + 1,
-            totalCorrectQuestion : totalCorrectQuestion
+            totalCorrectQuestion: totalCorrectQuestion
         ).environmentObject(quizData)
     }
     
@@ -330,8 +336,7 @@ struct QuestionView: View {
             // Update totalCoins in quizData
             quizData.totalCoins = quizData.quizCategories.reduce(0) { $0 + $1.totalCoin }
             
-            // Print statements to debug
-            print("Updated total coins:", quizData.totalCoins)
+            
         }
     }
    }
