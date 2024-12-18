@@ -21,7 +21,7 @@ struct HomeView: View {
                 headerView
                 greetingText
                 categoryScrollView
-                progressBars
+                progressViewBars
                 unfinishedGamesList
                 Spacer()
             }
@@ -70,8 +70,8 @@ struct HomeView: View {
             Grid {
                 GridRow {
                     ForEach(quizData.quizCategories, id: \.self) { category in
-//                        NavigationLink(destination: questionView(for: category)) 
-//                        {
+                        NavigationLink(destination: questionView(for: category)) 
+                        {
                             CardGridView(
                                 progressColor: Color(hex: category.hexColor),
                                 textColor: textColor,
@@ -80,7 +80,7 @@ struct HomeView: View {
                                 totalQuestions: category.questionIDs.count,
                                 progress: category.progress
                             )
-//                        }
+                        }
                     }
                 }
             }
@@ -101,19 +101,20 @@ struct HomeView: View {
         )
         .environmentObject(quizData)
     }
-
     
-    private var progressBars: some View {
+    
+    private var progressViewBars: some View {
         HStack {
             ForEach(quizData.quizCategories, id: \.self) { category in
-                RoundedRectangle(cornerRadius: 10)
+                ProgressView(value: category.progress, total: 100)
                     .frame(width: 15)
-                    .foregroundStyle(Color(hex: category.hexColor))
+                    .tint(Color(hex: category.hexColor))
             }
         }
         .frame(height: 4)
         .padding(.vertical)
     }
+    
     
     private var unfinishedGamesList: some View {
         VStack(alignment: .leading) {
