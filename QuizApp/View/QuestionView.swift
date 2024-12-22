@@ -87,6 +87,8 @@ struct QuestionView: View {
             HStack {
                 closeButton
                 Spacer()
+                TimerCircleView()
+                Spacer()
                 coinView
             }
             progressView.hidden()

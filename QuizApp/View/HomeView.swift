@@ -80,6 +80,13 @@ struct HomeView: View {
                                 totalQuestions: category.questionIDs.count,
                                 progress: category.progress
                             )
+                            .scrollTransition { content , phase in
+                                content
+                                    .opacity(phase.isIdentity ? 1.0 : 0.0)
+                                    .scaleEffect(x: phase.isIdentity ? 1.0 : 0.5,
+                                                 y: phase.isIdentity ? 1.0 : 0.5)
+                                    .offset(y: phase.isIdentity ? 0 : 15)
+                            }
                         }
                     }
                 }

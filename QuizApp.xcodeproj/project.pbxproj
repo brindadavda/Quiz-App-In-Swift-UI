@@ -20,6 +20,8 @@
 		001A50312C2DB4920097B3EF /* ABeeZee-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 001A502D2C2DB4920097B3EF /* ABeeZee-Regular.ttf */; };
 		001A50322C2DB4920097B3EF /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 001A502E2C2DB4920097B3EF /* OFL.txt */; };
 		001A50352C2DC6310097B3EF /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001A50342C2DC6310097B3EF /* UserStore.swift */; };
+		002C5CA32D17164400198D2D /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002C5CA22D17164400198D2D /* TabBarView.swift */; };
+		002C5CA52D17258400198D2D /* CountDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002C5CA42D17258400198D2D /* CountDownView.swift */; };
 		00303D292C24A185008B13FD /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00303D282C24A185008B13FD /* QuestionView.swift */; };
 		003C84752C283E8600744924 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003C84742C283E8600744924 /* ResultView.swift */; };
 		003C84782C28759B00744924 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003C84772C28759B00744924 /* DummyData.swift */; };
@@ -64,6 +66,8 @@
 		001A502D2C2DB4920097B3EF /* ABeeZee-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ABeeZee-Regular.ttf"; sourceTree = "<group>"; };
 		001A502E2C2DB4920097B3EF /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		001A50342C2DC6310097B3EF /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
+		002C5CA22D17164400198D2D /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		002C5CA42D17258400198D2D /* CountDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownView.swift; sourceTree = "<group>"; };
 		00303D282C24A185008B13FD /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		003C84742C283E8600744924 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		003C84772C28759B00744924 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
@@ -212,6 +216,8 @@
 				00303D282C24A185008B13FD /* QuestionView.swift */,
 				005D96452C25DB3300C7A232 /* CustomeAlertView.swift */,
 				003C84742C283E8600744924 /* ResultView.swift */,
+				002C5CA22D17164400198D2D /* TabBarView.swift */,
+				002C5CA42D17258400198D2D /* CountDownView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -378,9 +384,11 @@
 				0018B8512C26E5F3009166E7 /* QuizCategory.swift in Sources */,
 				003C84752C283E8600744924 /* ResultView.swift in Sources */,
 				0007CCD72C20A94100C3D9E8 /* ContentView.swift in Sources */,
+				002C5CA32D17164400198D2D /* TabBarView.swift in Sources */,
 				007EC59C2C233FDD0009036D /* HomeView.swift in Sources */,
 				0007CCD52C20A94100C3D9E8 /* QuizAppApp.swift in Sources */,
 				0018B8532C26E6A7009166E7 /* Questions.swift in Sources */,
+				002C5CA52D17258400198D2D /* CountDownView.swift in Sources */,
 				005D96462C25DB3300C7A232 /* CustomeAlertView.swift in Sources */,
 				003C84782C28759B00744924 /* DummyData.swift in Sources */,
 				007EC5972C23342A0009036D /* Color+Extension.swift in Sources */,

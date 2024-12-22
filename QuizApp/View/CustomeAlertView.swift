@@ -20,7 +20,7 @@ struct CustomAlertView : View {
     private var alertTitle : String
     private var alertMessage : String
     
-    init(bgColor: Color, cancleAction: @escaping () -> Void, OkAction: @escaping () -> Void, alertTitle: String = "Are you sure ?", alertMessage: String  = "You want to quit?") {
+    init(bgColor: Color, cancleAction: @escaping () -> Void, OkAction: @escaping () -> Void, alertTitle: String = "Are you sure ?", alertMessage: String  = "") {
         self.bgColor = bgColor
         self.cancleAction = cancleAction
         self.OkAction = OkAction
@@ -55,7 +55,7 @@ struct CustomAlertView : View {
             }
             .foregroundStyle(textColor)
             .padding(.all,30)
-            .frame(height: 200)
+            .frame(width: 300,height: 200)
             .background{
                 RoundedRectangle(cornerRadius: 15)
                     .foregroundStyle(.white)

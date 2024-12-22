@@ -49,7 +49,8 @@ struct ContentView: View {
                         .padding(.bottom,20)
                     
                     
-                    NavigationLink(destination: { HomeView().environmentObject(quizData) }, label: {
+                    NavigationLink(destination: { CustomTabBarView().environmentObject(quizData)
+                    }, label: {
                        
                         ZStack{
                             RoundedRectangle(cornerRadius: 100)
