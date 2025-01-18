@@ -9,34 +9,51 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var quizData: QuizData
+
+    private let bgColorCoin: Color = Color.coinColor
+    private let textColor: Color = Color.textColor
     
-    private let bgColor: LinearGradient = LinearGradient(colors: [Color(hex: "BE86D2"), Color(hex: "E89B9B")], startPoint: UnitPoint(x: 0, y: 0), endPoint: UnitPoint(x: 1, y: 1))
-    private let bgColorCoin: Color = Color(hex: "927AFF")
-    private let textColor: Color = Color(hex: "323E5B")
+    @State var showSettings: Bool = false
     
     var body: some View {
-        ZStack {
-            bgColor.ignoresSafeArea()
-            VStack(alignment: .leading) {
-                headerView
-                greetingText
-                categoryScrollView
-                progressViewBars
-                unfinishedGamesList
-                Spacer()
+        NavigationStack {
+            ZStack {
+                AppColor.bgColor.gradient.ignoresSafeArea()
+                VStack(alignment: .leading) {
+                    headerView
+                    greetingText
+                    categoryScrollView
+                    progressViewBars
+                    unfinishedGamesList
+                    Spacer()
+                }
+                .padding()
+                .foregroundStyle(textColor)
             }
-            .padding()
-            .foregroundStyle(textColor)
+            .navigationBarBackButtonHidden()
+            .navigationDestination(isPresented: $showSettings) {
+                SettingsView()
+            }
         }
-        .navigationBarBackButtonHidden()
     }
 
     
     private var headerView: some View {
+        
         HStack {
             Text("Hello Kitty!")
                 .font(Font.custom(AppFont.ragular.rawValue, size: 14))
             Spacer()
+            
+            //SettingsView
+            Button {
+                showSettings.toggle()
+            } label: {
+                Image(systemName: "gearshape.fill")
+                    .resizable()
+                    .frame(width: 24, height: 24)
+            }
+            
             HStack {
                 Text("\(quizData.totalCoins)")
                     .foregroundStyle(.white)
@@ -66,11 +83,12 @@ struct HomeView: View {
     }
     
     private var categoryScrollView: some View {
+        
         ScrollView(.horizontal, showsIndicators: false) {
             Grid {
                 GridRow {
                     ForEach(quizData.quizCategories, id: \.self) { category in
-                        NavigationLink(destination: questionView(for: category)) 
+                        NavigationLink(destination: questionView(for: category))
                         {
                             CardGridView(
                                 progressColor: Color(hex: category.hexColor),
@@ -88,6 +106,7 @@ struct HomeView: View {
                                     .offset(y: phase.isIdentity ? 0 : 15)
                             }
                         }
+                        .disabled(category.progress == 1.0)
                     }
                 }
             }
@@ -256,14 +275,6 @@ struct CardListView: View {
                 }
                 
                 Spacer()
-                
-                CircularProgressView(progress: progress, progressWidth: 3, progressColor: progressColor)
-                    .frame(width: 40, height: 40)
-                    .overlay {
-                        Text("\(Int(progress * 100))%")
-                            .font(.caption)
-                            .foregroundStyle(progressColor)
-                    }
             }
             .padding()
             .background {
@@ -276,35 +287,8 @@ struct CardListView: View {
     }
 }
 
-struct CircularProgressView: View {
-    let progress: CGFloat
-    let progressWidth: CGFloat
-    let progressColor: Color
-    
-    init(progress: CGFloat, progressWidth: CGFloat = 10, progressColor: Color = .blue) {
-        self.progress = progress
-        self.progressWidth = progressWidth
-        self.progressColor = progressColor
-    }
-    
-    var body: some View {
-        ZStack {
-            Circle()
-                .stroke(lineWidth: progressWidth)
-                .opacity(0.1)
-                .foregroundColor(progressColor)
-            
-            Circle()
-                .trim(from: 0.0, to: min(progress, 1.0))
-                .stroke(style: StrokeStyle(lineWidth: progressWidth, lineCap: .round, lineJoin: .round))
-                .foregroundColor(progressColor)
-                .rotationEffect(Angle(degrees: 90))
-                .animation(.linear, value: progress)
-        }
-    }
-}
-
 #Preview {
     HomeView()
         .environmentObject(QuizData(quizCategories: quizCategories, totalCoins: 0))
+        .environmentObject(Theme(colorScheme: .dark))
 }

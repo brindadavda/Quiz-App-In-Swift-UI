@@ -30,6 +30,18 @@
 		0073D2812C2B2B6A00D776D9 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0073D2802C2B2B6A00D776D9 /* View+Extension.swift */; };
 		007EC5972C23342A0009036D /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007EC5962C23342A0009036D /* Color+Extension.swift */; };
 		007EC59C2C233FDD0009036D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007EC59B2C233FDD0009036D /* HomeView.swift */; };
+		00CEB8FC2D3C44BD0087A9F2 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CEB8F12D3C44BD0087A9F2 /* Fonts.swift */; };
+		00CEB8FD2D3C44BD0087A9F2 /* ColorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CEB8EF2D3C44BD0087A9F2 /* ColorProvider.swift */; };
+		00CEB8FE2D3C44BD0087A9F2 /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CEB8F32D3C44BD0087A9F2 /* ImageProvider.swift */; };
+		00CEB8FF2D3C44BD0087A9F2 /* ThemeProvidingViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CEB8FA2D3C44BD0087A9F2 /* ThemeProvidingViewModifier.swift */; };
+		00CEB9002D3C44BD0087A9F2 /* Them.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CEB8F72D3C44BD0087A9F2 /* Them.swift */; };
+		00CEB9012D3C44BD0087A9F2 /* ThemedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CEB8F82D3C44BD0087A9F2 /* ThemedView.swift */; };
+		00CEB9022D3C44BD0087A9F2 /* Scheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CEB8F62D3C44BD0087A9F2 /* Scheme.swift */; };
+		00CEB9032D3C44BD0087A9F2 /* ThemeProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CEB8F92D3C44BD0087A9F2 /* ThemeProviding.swift */; };
+		00CEB9042D3C44BD0087A9F2 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CEB8EE2D3C44BD0087A9F2 /* Color.swift */; };
+		00CEB9052D3C44BD0087A9F2 /* BlockbusterLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CEB8F52D3C44BD0087A9F2 /* BlockbusterLabelStyle.swift */; };
+		00CEB9092D3C44E70087A9F2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CEB9072D3C44E70087A9F2 /* SettingsView.swift */; };
+		00CEB90A2D3C44E70087A9F2 /* RawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CEB9062D3C44E70087A9F2 /* RawView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +88,18 @@
 		0073D2802C2B2B6A00D776D9 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		007EC5962C23342A0009036D /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		007EC59B2C233FDD0009036D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		00CEB8EE2D3C44BD0087A9F2 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		00CEB8EF2D3C44BD0087A9F2 /* ColorProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorProvider.swift; sourceTree = "<group>"; };
+		00CEB8F12D3C44BD0087A9F2 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		00CEB8F32D3C44BD0087A9F2 /* ImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; };
+		00CEB8F52D3C44BD0087A9F2 /* BlockbusterLabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockbusterLabelStyle.swift; sourceTree = "<group>"; };
+		00CEB8F62D3C44BD0087A9F2 /* Scheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheme.swift; sourceTree = "<group>"; };
+		00CEB8F72D3C44BD0087A9F2 /* Them.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Them.swift; sourceTree = "<group>"; };
+		00CEB8F82D3C44BD0087A9F2 /* ThemedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedView.swift; sourceTree = "<group>"; };
+		00CEB8F92D3C44BD0087A9F2 /* ThemeProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProviding.swift; sourceTree = "<group>"; };
+		00CEB8FA2D3C44BD0087A9F2 /* ThemeProvidingViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProvidingViewModifier.swift; sourceTree = "<group>"; };
+		00CEB9062D3C44E70087A9F2 /* RawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawView.swift; sourceTree = "<group>"; };
+		00CEB9072D3C44E70087A9F2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +242,7 @@
 				003C84742C283E8600744924 /* ResultView.swift */,
 				002C5CA22D17164400198D2D /* TabBarView.swift */,
 				002C5CA42D17258400198D2D /* CountDownView.swift */,
+				00CEB9082D3C44E70087A9F2 /* Settings */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -234,6 +259,10 @@
 			isa = PBXGroup;
 			children = (
 				0073D27E2C2B278300D776D9 /* Enums.swift */,
+				00CEB8F02D3C44BD0087A9F2 /* Colors */,
+				00CEB8F22D3C44BD0087A9F2 /* Fonts */,
+				00CEB8F42D3C44BD0087A9F2 /* Images */,
+				00CEB8FB2D3C44BD0087A9F2 /* UI */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -245,6 +274,53 @@
 				0073D2802C2B2B6A00D776D9 /* View+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		00CEB8F02D3C44BD0087A9F2 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				00CEB8EE2D3C44BD0087A9F2 /* Color.swift */,
+				00CEB8EF2D3C44BD0087A9F2 /* ColorProvider.swift */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
+		00CEB8F22D3C44BD0087A9F2 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				00CEB8F12D3C44BD0087A9F2 /* Fonts.swift */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		00CEB8F42D3C44BD0087A9F2 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				00CEB8F32D3C44BD0087A9F2 /* ImageProvider.swift */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		00CEB8FB2D3C44BD0087A9F2 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				00CEB8F52D3C44BD0087A9F2 /* BlockbusterLabelStyle.swift */,
+				00CEB8F62D3C44BD0087A9F2 /* Scheme.swift */,
+				00CEB8F72D3C44BD0087A9F2 /* Them.swift */,
+				00CEB8F82D3C44BD0087A9F2 /* ThemedView.swift */,
+				00CEB8F92D3C44BD0087A9F2 /* ThemeProviding.swift */,
+				00CEB8FA2D3C44BD0087A9F2 /* ThemeProvidingViewModifier.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		00CEB9082D3C44E70087A9F2 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				00CEB9062D3C44E70087A9F2 /* RawView.swift */,
+				00CEB9072D3C44E70087A9F2 /* SettingsView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -384,6 +460,18 @@
 				0018B8512C26E5F3009166E7 /* QuizCategory.swift in Sources */,
 				003C84752C283E8600744924 /* ResultView.swift in Sources */,
 				0007CCD72C20A94100C3D9E8 /* ContentView.swift in Sources */,
+				00CEB9092D3C44E70087A9F2 /* SettingsView.swift in Sources */,
+				00CEB90A2D3C44E70087A9F2 /* RawView.swift in Sources */,
+				00CEB8FC2D3C44BD0087A9F2 /* Fonts.swift in Sources */,
+				00CEB8FD2D3C44BD0087A9F2 /* ColorProvider.swift in Sources */,
+				00CEB8FE2D3C44BD0087A9F2 /* ImageProvider.swift in Sources */,
+				00CEB8FF2D3C44BD0087A9F2 /* ThemeProvidingViewModifier.swift in Sources */,
+				00CEB9002D3C44BD0087A9F2 /* Them.swift in Sources */,
+				00CEB9012D3C44BD0087A9F2 /* ThemedView.swift in Sources */,
+				00CEB9022D3C44BD0087A9F2 /* Scheme.swift in Sources */,
+				00CEB9032D3C44BD0087A9F2 /* ThemeProviding.swift in Sources */,
+				00CEB9042D3C44BD0087A9F2 /* Color.swift in Sources */,
+				00CEB9052D3C44BD0087A9F2 /* BlockbusterLabelStyle.swift in Sources */,
 				002C5CA32D17164400198D2D /* TabBarView.swift in Sources */,
 				007EC59C2C233FDD0009036D /* HomeView.swift in Sources */,
 				0007CCD52C20A94100C3D9E8 /* QuizAppApp.swift in Sources */,

@@ -8,7 +8,24 @@
 import Foundation
 import SwiftUI
 
-extension Color {
+public extension Color {
+    /// A convinience initializer to help create colors using hex format
+    ///
+    /// You can create a Color using the ``init(hex:alpha:)`` initializer
+    ///
+    /// ```swift
+    /// let myColor = Color(hex: 0x4781FF)
+    /// ```
+    init(hex: UInt, alpha: Double = 1) {
+        self.init(
+            .sRGB,
+            red: Double((hex >> 16) & 0xff) / 255,
+            green: Double((hex >> 08) & 0xff) / 255,
+            blue: Double((hex >> 00) & 0xff) / 255,
+            opacity: alpha
+        )
+    }
+    
     init(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int: UInt64 = 0
@@ -24,7 +41,7 @@ extension Color {
         default:
             (a, r, g, b) = (1, 1, 1, 0)
         }
-
+        
         self.init(
             .sRGB,
             red: Double(r) / 255,
@@ -33,5 +50,5 @@ extension Color {
             opacity: Double(a) / 255
         )
     }
+    
 }
-

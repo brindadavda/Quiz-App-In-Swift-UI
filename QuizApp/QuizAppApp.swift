@@ -11,9 +11,13 @@ import SwiftUI
 struct QuizAppApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
+    @Environment(\.colorScheme)
+    private var colorScheme
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .themeProviding(colorScheme: colorScheme)
                 .environmentObject(appDelegate.quizData)
         }
     }

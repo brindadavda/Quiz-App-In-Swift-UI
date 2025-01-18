@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import SwiftUI
 
 enum CoinsValue : Int{
     case right = 10
@@ -39,3 +39,27 @@ enum Categories : String{
         }
     }
 }
+
+enum AppColor {
+    case bgColor
+    
+    var gradient: LinearGradient {
+        switch self {
+        case .bgColor:
+            return LinearGradient(
+                colors: [Color(hex: 0xBE86D2), Color(hex: 0xE89B9B)],
+                startPoint: UnitPoint(x: 0, y: 0),
+                endPoint: UnitPoint(x: 1, y: 1)
+            )
+        }
+    }
+}
+
+
+
+enum AppThem {
+    case ligt
+    case dark
+}
+
+

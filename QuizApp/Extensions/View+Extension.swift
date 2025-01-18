@@ -33,3 +33,19 @@ extension View {
         .navigationViewStyle(.stack)
     }
 }
+
+public extension View {
+  func themed() -> some View {
+    self.modifier(ThemedView())
+  }
+}
+
+public extension View {
+  
+  /// A modifier that initiates theme provider and inject view as an environment object. This modifier should be called only once at the top of view hierarchy.
+  /// - Parameter colorScheme: the initial colorScheme for start the app
+  /// - Returns: view
+  func themeProviding(colorScheme: ColorScheme = .light) -> some View {
+    return self.modifier(ThemeProvidingViewModifier(colorScheme: colorScheme))
+  }
+}

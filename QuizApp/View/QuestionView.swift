@@ -9,10 +9,9 @@ import SwiftUI
 
 struct QuestionView: View {
     // MARK: - Properties
-    private let bgColor = LinearGradient(colors: [Color(hex: "BE86D2"), Color(hex: "E89B9B")], startPoint: .topLeading, endPoint: .bottomTrailing)
-    private let bgColorCoin = Color(hex: "927AFF")
-    private let textColor = Color(hex: "323E5B")
-    private let shadowColor = Color(hex: "D8D5EA")
+    private let bgColorCoin = Color.coinColor
+    private let textColor = Color.textColor
+    private let shadowColor = Color.shadowColor
     
     private let progress: CGFloat = 0.5
     private let countDown: Int = 5
@@ -52,19 +51,21 @@ struct QuestionView: View {
                 cancleAction: { self.showingDetail.toggle() },
                 OkAction: handleAlertOkAction
             )
-            .background(bgColor)
+            .background(AppColor.bgColor.gradient)
             .navigate(to: HomeView().environmentObject(quizData), when: $navigateToHome)
             .navigationBarBackButtonHidden()
         } else {
             contentView
+                .navigationBarTitleDisplayMode(.inline)
                 .navigationBarBackButtonHidden()
         }
+        
     }
     
     // MARK: - Content View
     private var contentView: some View {
         ZStack(alignment: .topLeading) {
-            bgColor.ignoresSafeArea()
+            AppColor.bgColor.gradient.ignoresSafeArea()
             VStack {
                 headerView
                 questionView
@@ -88,10 +89,10 @@ struct QuestionView: View {
                 closeButton
                 Spacer()
                 TimerCircleView()
+                    .hidden()
                 Spacer()
                 coinView
             }
-            progressView.hidden()
         }
     }
     
@@ -111,8 +112,6 @@ struct QuestionView: View {
     
     // MARK: - Coin View
     private var coinView: some View {
-        
-        
         HStack {
             Text("\(totalCoins)")
                 .font(Font.custom(AppFont.ragular.rawValue, size: 12))
@@ -134,15 +133,6 @@ struct QuestionView: View {
         
     }
     
-    // MARK: - Progress View
-    private var progressView: some View {
-        CircularProgressView(progress: progress, progressWidth: 3, progressColor: .white)
-            .frame(width: 48, height: 48)
-            .overlay {
-                Text(countDown < 10 ? "0\(countDown)" : "\(countDown)")
-                    .foregroundStyle(.white)
-            }
-    }
     
     // MARK: - Question View
     private var questionView: some View {
@@ -262,7 +252,7 @@ struct QuestionView: View {
         if currentQuestionIndex < questions.count - 1 {
             return AnyView(
                 Button(action: {
-                    self.navigateToNextQuestion = true
+                    self.currentQuestionIndex = currentQuestionIndex + 1
                 }, label: {
                     RoundedRectangle(cornerRadius: 30)
                         .foregroundStyle(.white)
@@ -276,12 +266,6 @@ struct QuestionView: View {
                         .frame(width: 67, height: 60)
                         .padding(.trailing, 10)
                 })
-                .background(
-                    NavigationLink(destination: nextQuestionView, isActive: $navigateToNextQuestion) {
-                        EmptyView()
-                    }
-                    .hidden()
-                )
             )
         } else {
             return AnyView(
@@ -325,7 +309,8 @@ struct QuestionView: View {
        
        // MARK: - Handle Alert OK Action
        private func handleAlertOkAction() {
-           navigateToHome.toggle()
+//           navigateToHome.toggle()
+           dismiss()
        }
     
         //MARK: - update quiz data
