@@ -8,9 +8,9 @@
 import SwiftUI
 
 public extension Color {
-    static var coinColor : Color = Color("Colors/coin", bundle: .main)
-    static var textColor : Color = Color("Colors/text", bundle: .main)
-    static var shadowColor : Color = Color("Colors/shadow", bundle: .main)
+    static var coinColor : Color = Color("coin", bundle: .main)
+    static var textColor : Color = Color("text", bundle: .main)
+    static var shadowColor : Color = Color("shadow", bundle: .main)
 }
 
 public extension Color {

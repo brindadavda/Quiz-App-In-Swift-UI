@@ -18,6 +18,7 @@ struct SettingsView: View {
             Spacer()
         }
         .navigationTitle("Settings")
+        .navigationBarTitleDisplayMode(.inline)
     }
        
 }
