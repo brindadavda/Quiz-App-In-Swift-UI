@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -26,6 +26,7 @@
 		003C84752C283E8600744924 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003C84742C283E8600744924 /* ResultView.swift */; };
 		003C84782C28759B00744924 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003C84772C28759B00744924 /* DummyData.swift */; };
 		005D96462C25DB3300C7A232 /* CustomeAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005D96452C25DB3300C7A232 /* CustomeAlertView.swift */; };
+		00711BAD2D3CBC7600AD30FD /* CPSToolbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00711BAC2D3CBC7600AD30FD /* CPSToolbarItem.swift */; };
 		0073D27F2C2B278300D776D9 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0073D27E2C2B278300D776D9 /* Enums.swift */; };
 		0073D2812C2B2B6A00D776D9 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0073D2802C2B2B6A00D776D9 /* View+Extension.swift */; };
 		007EC5972C23342A0009036D /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007EC5962C23342A0009036D /* Color+Extension.swift */; };
@@ -84,6 +85,7 @@
 		003C84742C283E8600744924 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		003C84772C28759B00744924 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		005D96452C25DB3300C7A232 /* CustomeAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomeAlertView.swift; sourceTree = "<group>"; };
+		00711BAC2D3CBC7600AD30FD /* CPSToolbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPSToolbarItem.swift; sourceTree = "<group>"; };
 		0073D27E2C2B278300D776D9 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		0073D2802C2B2B6A00D776D9 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		007EC5962C23342A0009036D /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
@@ -101,6 +103,10 @@
 		00CEB9062D3C44E70087A9F2 /* RawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawView.swift; sourceTree = "<group>"; };
 		00CEB9072D3C44E70087A9F2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		00711BAE2D3CBEAE00AD30FD /* BlockBasterStyle */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = BlockBasterStyle; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		0007CCCE2C20A94100C3D9E8 /* Frameworks */ = {
@@ -258,11 +264,13 @@
 		0073D27D2C2B277500D776D9 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				00711BAE2D3CBEAE00AD30FD /* BlockBasterStyle */,
 				0073D27E2C2B278300D776D9 /* Enums.swift */,
 				00CEB8F02D3C44BD0087A9F2 /* Colors */,
 				00CEB8F22D3C44BD0087A9F2 /* Fonts */,
 				00CEB8F42D3C44BD0087A9F2 /* Images */,
 				00CEB8FB2D3C44BD0087A9F2 /* UI */,
+				00711BAC2D3CBC7600AD30FD /* CPSToolbarItem.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -337,6 +345,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				00711BAE2D3CBEAE00AD30FD /* BlockBasterStyle */,
 			);
 			name = QuizApp;
 			productName = QuizApp;
@@ -463,6 +474,7 @@
 				00CEB9092D3C44E70087A9F2 /* SettingsView.swift in Sources */,
 				00CEB90A2D3C44E70087A9F2 /* RawView.swift in Sources */,
 				00CEB8FC2D3C44BD0087A9F2 /* Fonts.swift in Sources */,
+				00711BAD2D3CBC7600AD30FD /* CPSToolbarItem.swift in Sources */,
 				00CEB8FD2D3C44BD0087A9F2 /* ColorProvider.swift in Sources */,
 				00CEB8FE2D3C44BD0087A9F2 /* ImageProvider.swift in Sources */,
 				00CEB8FF2D3C44BD0087A9F2 /* ThemeProvidingViewModifier.swift in Sources */,

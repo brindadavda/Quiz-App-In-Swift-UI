@@ -16,7 +16,6 @@ struct HomeView: View {
     @State var showSettings: Bool = false
     
     var body: some View {
-        NavigationStack {
             ZStack {
                 AppColor.bgColor.gradient.ignoresSafeArea()
                 VStack(alignment: .leading) {
@@ -30,11 +29,10 @@ struct HomeView: View {
                 .padding()
                 .foregroundStyle(textColor)
             }
-            .navigationBarBackButtonHidden()
             .navigationDestination(isPresented: $showSettings) {
                 SettingsView()
             }
-        }
+            .navigationBarBackButtonHidden()
     }
 
     

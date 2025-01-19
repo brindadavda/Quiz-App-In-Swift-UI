@@ -17,7 +17,7 @@ struct ContentView: View {
     @EnvironmentObject var quizData: QuizData
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack{
                 Image("introImg")
                     .resizable()

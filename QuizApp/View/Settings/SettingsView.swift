@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @ThemeProviding var themProvider
+    @ThemeProviding var themeProvider
     
     var body: some View {
         VStack {
@@ -17,10 +17,24 @@ struct SettingsView: View {
             
             Spacer()
         }
-        .navigationTitle("Settings")
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text("Settings")
+                    .foregroundStyle(forgroundColor)
+            }
+            
+                
+        }
         .navigationBarTitleDisplayMode(.inline)
     }
        
+}
+
+private extension SettingsView {
+    
+    var forgroundColor: Color {
+        themeProvider.color(for: .blockbusterLabelStyleProvider, type: .foreground, typeStyle: .label, enabled: true)
+    }
 }
 
 

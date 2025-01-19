@@ -8,32 +8,33 @@ struct CustomTabBarView: View {
         ZStack {
             VStack(spacing: 0) {
                 // Main Content
-                Group {
-                    switch selectedIndex {
-                    case 0:
-                        NavigationStack {
+//                NavigationStack {
+                    Group {
+                        switch selectedIndex {
+                        case 0:
+                            
                             Text("Profile view")
                                 .navigationTitle("Profile")
-                        }
-                    case 1:
-                        NavigationStack {
+                        case 1:
+                            
                             HomeView().environmentObject(quizData)
-                        }
-                    case 2:
-                        NavigationStack {
+                            
+                        case 2:
+                            
                             Text("About view")
                                 .navigationTitle("About")
+                            
+                        default:
+                            Text("Home")
                         }
-                    default:
-                        Text("Home")
                     }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    
+                    // Custom Tab Bar
+                    CustomTabBar(selectedIndex: $selectedIndex)
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                
-                // Custom Tab Bar
-                CustomTabBar(selectedIndex: $selectedIndex)
             }
-        }
+//        }
         .edgesIgnoringSafeArea(.bottom)
     }
 }
